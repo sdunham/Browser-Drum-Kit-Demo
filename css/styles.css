@@ -1,0 +1,12 @@
+.drum{
+	width: 100px;
+	height: 100px;
+	border: 1px solid;
+	float: left;
+	margin-right: 15px;
+}
+
+.drum.active{
+	background: red;
+	opacity: 0.5;
+}
