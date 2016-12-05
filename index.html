@@ -7,18 +7,28 @@
         <meta name="description" content="A simple browser-based drum kit sample codebase">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
         <!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
+        <article class="page">
+          <div class="container">
+            <h1>Welcome to BeatCrafting!</h1>
+            <p>Can you craft the most catchy beat?</p>
+            <br>
 
-        <div class="drum" id="snare"></div>
-        <div class="drum" id="tomhi"></div>
-        <div class="drum" id="highhat"></div>
-        <div class="drum" id="bass"></div>
-        <div class="drum" id="chimes"></div>
+            <div class="drumkit">
+              <div class="drum" id="snare"></div>
+              <div class="drum" id="tomhi"></div>
+              <div class="drum" id="highhat"></div>
+              <div class="drum" id="bass"></div>
+              <div class="drum" id="chimes"></div>
+            </div><!-- .drumkit -->
+          </div>
+        </article>
 
         <!--<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>-->
         <script src="js/vendor/howler.js"></script>
