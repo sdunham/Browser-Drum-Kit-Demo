@@ -7,10 +7,12 @@
  * @param {string} drums[].src The path to the sound file for this drum
  * @param {string} drums[].key The key values which will trigger this drum to play when pressed (see https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values)
  * @param {string} drums[].elId The ID of the DOM element representing this drum
+ * @param {boolean} allowContinuous Whether to allow overlapping drum KeyboardEvents to trigger a drum. Defaults to false, which will require that the drum completes before a user can trigger it again.
  */
-var DrumKit = function( drums ){
+var DrumKit = function( drums, allowContinuous ){
 	// Store global properties for this DrumKit
 	self = this;
+	self.allowContinuous = allowContinuous || false; // Whether this DrumKit allows the same drum to be hit continuously (i.e. overlapping)
 	self.drums = drums; // Array of drums in this DrumKit
 	self.loadedDrums = 0; // Number of drums in this Drumkit whose audio field have loaded
 	self.allDrumsLoaded = false; // If all the DrumKit audio files have loaded
@@ -73,8 +75,7 @@ var DrumKit = function( drums ){
 
 				document.addEventListener('keydown', (event) => {
 	  				const keyName = event.key;
-
-	  				if( self.keyMap[keyName] && !self.keyMap[keyName].sound.playing() ){
+	  				if( self.keyMap[keyName] && ( self.allowContinuous || !self.keyMap[keyName].sound.playing() ) ){
 	  					self.keyMap[keyName].sound.play();
 	  				}
 	  			});
@@ -144,5 +145,4 @@ var myDrumKit = new DrumKit([
 		key:' ',
 		elId: 'chimes'
 	}
-
-]);
+], true);
